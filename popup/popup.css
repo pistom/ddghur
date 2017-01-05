@@ -1,0 +1,72 @@
+html, body {
+  
+  
+}
+#wrapper {  
+    margin:5px;
+    box-sizing:border-box;
+}
+.popupTitle {
+    margin:0 0 5px;
+}
+.domainsList {
+    
+}
+.domainsList__row {
+    margin-top:5px;
+    padding-top:5px;
+    border-top:1px solid #ddd;
+    clear:both;
+}
+.domainsList__rowDomain {
+    float:left;
+}
+.domainsList__rowDelBtn {
+    float:right;
+    padding:0;
+    margin-bottom:5px;
+}
+.showHidden {
+    margin-top:5px;
+    padding-top:5px;
+    border-top:1px solid #ddd;
+    clear:both;
+}
+.showHidden button {
+    float:right;
+    margin-bottom:5px;
+}
+.domainsListTitle {
+    margin-top:5px;
+    padding-top:5px;
+    border-top:1px solid #ddd;
+    margin-bottom:0;
+    clear:both;
+}
+img.icon {
+    height: 100%;
+}
+button {
+    padding:0;
+    margin:0;
+    display:inline-block;
+}
+input.addDomain {
+    margin-bottom:5px;
+    display:block;
+    float:left;
+}
+button.addDomain {
+    margin-bottom:5px;
+    float:right;
+}
+.footer {
+    clear:both;
+    margin-top:5px;
+    padding-top:5px;
+    border-top:1px solid #ddd;
+    text-align:center;
+}
+.footer img {
+    height: 50px;
+}

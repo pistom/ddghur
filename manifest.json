@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "DuckDuckGo Hide Unwanted Results",
+  "short_name": "ddghur",
+  "version": "0.2",
+  "developer": {
+    "name": "Tomasz Pisarek",
+    "url": "http://www.cinquiemecrayon.eu/"
+  },
+
+  "description": "Hide unwanted DuckDuckGo search results from specific domains.",
+
+  "icons": {
+    "32": "icons/ddghur-32.png",
+    "48": "icons/ddghur-48.png",
+    "96": "icons/ddghur-96.png"
+  },
+
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": {
+      "19": "icons/ddghur-19.png",
+      "38": "icons/ddghur-38.png"
+    },
+    "default_title": "DuckDuckGo Hide Unwanted Results",
+    "default_popup": "popup/popup.html"
+  },
+
+  "permissions": ["storage","contextMenus","activeTab"],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.duckduckgo.com/*"],
+      "js": ["ddghur.js"],
+      "css": ["ddghur.css"]
+    }
+  ],
+  "content_security_policy": "default-src 'self'"
+
+}
+

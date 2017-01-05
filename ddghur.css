@@ -1,0 +1,31 @@
+.results .result {
+    overflow-y: hidden;
+    max-height: 200px;
+	transition-property: all;
+	transition-duration: 1s;
+}
+.results .result.hideResult {
+    max-height: 0;
+    margin-bottom: 0;
+    opacity:.5;
+}
+.results .result.hideResult.enabled {
+    max-height: 200px;
+    margin-bottom: inherit;
+}
+.results .result .hideShowLink {
+    font-size: 11px;
+    float:right;
+    display:none;
+    position:absolute;
+    bottom:-4px;
+    right:10px;
+    opacity:.75
+}
+.results .result.highlight .hideShowLink {
+    display:inline-block;
+}
+.results .result.highlight .hideShowLink span {
+    font-weight: bold;
+    font-size: 12px;
+}

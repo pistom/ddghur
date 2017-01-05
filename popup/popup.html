@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css"/>
+  </head>
+
+  <body>
+    <div id="wrapper">
+        <h3 class="popupTitle">Hide unwanted DuckDuckGo<br />search results</h3>
+        <div class="intro">
+            
+        </div>
+        <form>
+            <input class="addDomain" type="text" name="domain" placeholder="Add domain" />
+            <button class="addDomain" type="submit"><img src="images/add.svg" class="icon" alt="+"/></button>
+        </form>
+        <div class="showHidden">
+            <span>Show hidden results</span>
+            <button class="showHiddenLink"><img src="images/hidden.svg" class="icon" alt="Show"></button>
+        </div>
+        <h3 class="domainsListTitle">Hidden domains:</h3>
+        <div class="domainsList">
+            
+        </div>
+        <div class="footer">
+            <a href="https://duckduckgo.com/" target="_blanc"><img src="images/ddg_logo.svg" alt="DuckDuckGo Logo" /></a>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+
+</html>
