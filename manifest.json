@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "DuckDuckGo Hide Unwanted Results",
   "short_name": "ddghur",
-  "version": "0.2",
+  "version": "0.4",
   "developer": {
     "name": "Tomasz Pisarek",
     "url": "http://www.cinquiemecrayon.eu/"
@@ -35,7 +35,12 @@
       "css": ["ddghur.css"]
     }
   ],
-  "content_security_policy": "default-src 'self'"
-
+  "content_security_policy": "default-src 'self'",  
+  "applications": {
+    "gecko": {
+      "id": "{2c4b535d-e705-4a71-a925-b53a8bca13d1}",
+      "strict_min_version": "52.0"
+    }
+  }
 }
 

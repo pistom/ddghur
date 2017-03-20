@@ -3,8 +3,8 @@ init();
 function init(){
     let ddghurStorage = browser.storage.local.get();
     ddghurStorage.then(function(res){
-        ddghurBlockedDomainsArr = (res[0].ddghurBlockedDomains !== undefined) ? res[0].ddghurBlockedDomains : []; 
-        ddghurOptions = (res[0].ddghurOptions !== undefined) ? res[0].ddghurOptions : {};
+        ddghurBlockedDomainsArr = (res.ddghurBlockedDomains !== undefined) ? res.ddghurBlockedDomains : []; 
+        ddghurOptions = (res.ddghurOptions !== undefined) ? res.ddghurOptions : {};
         hideResults(ddghurBlockedDomainsArr);
         addHideShowResultsForDomainLink();
     });
@@ -34,7 +34,7 @@ function addToBlockedDomainsArr(domain){
     console.log("Add '"+ domain +"' to blocked domains list");
     let ddghurStorage = browser.storage.local.get();
     ddghurStorage.then(function(res){
-        let ddghurBlockedDomainsArr = (res[0].ddghurBlockedDomains !== undefined) ? res[0].ddghurBlockedDomains : []; 
+        let ddghurBlockedDomainsArr = (res.ddghurBlockedDomains !== undefined) ? res.ddghurBlockedDomains : []; 
         ddghurBlockedDomainsArr.push(domain);
         var storingDomain = browser.storage.local.set({ ddghurBlockedDomains : ddghurBlockedDomainsArr });
         init();
@@ -77,5 +77,3 @@ var observer = new MutationObserver(function(mutations) {
 });
 var config = {childList: true};
 observer.observe(target, config);
-
- 
