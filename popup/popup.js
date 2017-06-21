@@ -74,6 +74,7 @@ var ddghurForm = document.querySelector("form");
 ddghurForm.addEventListener("submit", function(e){
     e.preventDefault();
     storeDomain(ddghurForm.domain.value);
+    ddghurForm.querySelector("[name='domain']").value = "";
 });
 
 var showHiddenLink = document.querySelector(".showHiddenLink");
