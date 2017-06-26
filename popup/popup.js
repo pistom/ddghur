@@ -1,8 +1,19 @@
 var ddghurBlockedDomains = browser.storage.local.get("ddghurBlockedDomains");
 var ddghurOptions = browser.storage.local.get("ddghurOptions");
+
+showStoredObjects = function(){
+    browser.storage.local.get("ddghurOptions").then(function(data){
+        console.dir(data.ddghurOptions);
+    });
+    browser.storage.local.get("ddghurBlockedDomains").then(function(data){
+        console.log(data.ddghurBlockedDomains.join(', '));
+    });
+}
+
 init();
 
 function init(){
+    showStoredObjects();
     ddghurBlockedDomains.then(function(res){
         ddghurBlockedDomainsArr = (res.ddghurBlockedDomains !== undefined) ? res.ddghurBlockedDomains : [];  
         displayDomains(ddghurBlockedDomainsArr);
@@ -80,13 +91,22 @@ ddghurForm.addEventListener("submit", function(e){
 var showHiddenLink = document.querySelector(".showHiddenLink");
 var showHiddenLinkIcon = showHiddenLink.querySelector("img.icon");
 
+var animationsLink = document.querySelector(".animationsLink");
+var animationsLinkIcon = animationsLink.querySelector("img.icon");
+
+var options = {};
 ddghurOptions.then(function(res){
-    var options = (res.ddghurOptions !== undefined) ? res.ddghurOptions : {}; 
+    options = (res.ddghurOptions !== undefined) ? res.ddghurOptions : {}; 
     if(("showedHiddenResults" in options) && options.showedHiddenResults === true) {
         showHiddenLinkIcon.src = "images/showed.svg";
         showHiddenLink.classList.add("enabled");
     }
+    if(!("animations" in options) || options.animations === true) {
+        animationsLinkIcon.src = "images/enabled.svg";
+        animationsLink.classList.add("enabled");
+    }
 });
+
 
 showHiddenLink.addEventListener("click", (e) => {
     
@@ -95,17 +115,35 @@ showHiddenLink.addEventListener("click", (e) => {
         showHiddenLinkIcon.src = "images/hidden.svg";
         code = 'var hiddenResults = document.querySelectorAll(".hideResult");'+
                'for(let i=0; i<hiddenResults.length; i++){hiddenResults[i].classList.remove("enabled")}';
-        browser.storage.local.set({ ddghurOptions : {showedHiddenResults:false} });
+        options.showedHiddenResults = false;
+        browser.storage.local.set({ "ddghurOptions" : options });
     }
     else {
         showHiddenLinkIcon.src = "images/showed.svg";
         code = 'var hiddenResults = document.querySelectorAll(".hideResult");'+
                'for(let i=0; i<hiddenResults.length; i++){hiddenResults[i].classList.add("enabled")}';
-        browser.storage.local.set({ ddghurOptions : {showedHiddenResults:true} });
+        options.showedHiddenResults = true;
+        browser.storage.local.set({ "ddghurOptions" : options });
     }
     showHiddenLink.classList.toggle("enabled");
     browser.tabs.executeScript({
         code: code
     });
+});
+
+animationsLink.addEventListener("click", (e) => {
+    
+    if(animationsLink.classList.contains("enabled")){
+        animationsLinkIcon.src = "images/disabled.svg";
+        options.animations = false;
+        browser.storage.local.set({ "ddghurOptions" : options });
+    }
+    else {
+        animationsLinkIcon.src = "images/enabled.svg";
+        options.animations = true;
+        browser.storage.local.set({ "ddghurOptions" : options });
+    }
+    animationsLink.classList.toggle("enabled");
+    
 });
 

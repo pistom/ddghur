@@ -21,6 +21,9 @@ function hideResults(blockedDomains){
                 if(('showedHiddenResults' in ddghurOptions) && ddghurOptions.showedHiddenResults === true) {
                     results[i].classList.add("enabled");
                 }
+                if(('animations' in ddghurOptions) && ddghurOptions.animations === false) {
+                    results[i].classList.add("no-animations");
+                }
             } 
         }
     }

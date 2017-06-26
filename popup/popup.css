@@ -26,13 +26,13 @@ html, body {
     padding:0;
     margin-bottom:5px;
 }
-.showHidden {
+.options .option {
     margin-top:5px;
     padding-top:5px;
     border-top:1px solid #ddd;
     clear:both;
 }
-.showHidden button {
+.options .option button {
     float:right;
     margin-bottom:5px;
 }

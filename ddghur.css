@@ -4,6 +4,10 @@
 	transition-property: all;
 	transition-duration: 1s;
 }
+.results .result.no-animations {
+	transition-property: none;
+	transition-duration: 0;
+}
 .results .result.hideResult {
     max-height: 0;
     margin-bottom: 0;
