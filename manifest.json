@@ -2,10 +2,10 @@
   "manifest_version": 2,
   "name": "DuckDuckGo Hide Unwanted Results",
   "short_name": "ddghur",
-  "version": "0.5",
+  "version": "0.7",
   "developer": {
     "name": "Tomasz Pisarek",
-    "url": "http://www.cinquiemecrayon.eu/"
+    "url": "https://github.com/pistom"
   },
 
   "description": "Hide unwanted DuckDuckGo search results from specific domains.",
