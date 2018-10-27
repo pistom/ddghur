@@ -18,13 +18,15 @@
     margin-bottom: inherit;
 }
 .results .result .hideShowLink {
-    font-size: 11px;
     float:right;
     display:none;
-    position:absolute;
-    bottom:-4px;
-    right:10px;
-    opacity:.75
+    overflow: hidden;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.result__menu {
+    width: 15% !important;
 }
 .results .result.highlight .hideShowLink {
     display:inline-block;
