@@ -54,20 +54,17 @@ function hideResultLink(e){
 function addHideShowResultsForDomainLink(){
     let results = document.querySelectorAll(".results .result:not(.result--sep):not(.result--more):not(.hideResult)");
     for(let i=0; i<results.length; i++){
-        let resultUrl = results[i].querySelector(".result__body");
+        let resultUrl = results[i].querySelector(".result__body .result__extras");
         let resultHasHideLink = results[i].querySelectorAll(".hideShowLink");
         if(resultHasHideLink.length>0)
             continue;
         let resultDomain = results[i].dataset.domain;
         let link = document.createElement("a");
+        link.title = "Hide results from "+resultDomain
         link.dataset.domain = resultDomain;
         link.classList.add("hideShowLink");
-        let linkTxt = document.createTextNode("Hide results from ");
-        let linkDomain = document.createElement("span");
-        let linkDomainTxt = document.createTextNode("'"+resultDomain+"'");
-        linkDomain.appendChild(linkDomainTxt);
+        let linkTxt = document.createTextNode("Hide results");
         link.appendChild(linkTxt);
-        link.appendChild(linkDomain);
         resultUrl.appendChild(link);
         link.addEventListener("click",hideResultLink,false);
         
