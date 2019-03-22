@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "DuckDuckGo Hide Unwanted Results",
   "short_name": "ddghur",
-  "version": "0.7",
+  "version": "0.8",
   "developer": {
     "name": "Tomasz Pisarek",
     "url": "https://github.com/pistom"

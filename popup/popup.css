@@ -9,9 +9,6 @@ html, body {
 .popupTitle {
     margin:0 0 5px;
 }
-.domainsList {
-    
-}
 .domainsList__row {
     margin-top:5px;
     padding-top:5px;
@@ -69,4 +66,14 @@ button.addDomain {
 }
 .footer img {
     height: 50px;
+}
+
+.tryHohser {
+    margin-top: 15px;
+    padding: 3px;
+    background-color: #AECEE5;
+}
+
+.tryHohser p {
+    margin: 0;
 }

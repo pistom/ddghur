@@ -94,6 +94,8 @@ var showHiddenLinkIcon = showHiddenLink.querySelector("img.icon");
 var animationsLink = document.querySelector(".animationsLink");
 var animationsLinkIcon = animationsLink.querySelector("img.icon");
 
+var exportListLink = document.querySelector(".exportListLink");
+
 var options = {};
 ddghurOptions.then(function(res){
     options = (res.ddghurOptions !== undefined) ? res.ddghurOptions : {}; 
@@ -145,5 +147,33 @@ animationsLink.addEventListener("click", (e) => {
     }
     animationsLink.classList.toggle("enabled");
     
+});
+
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    var a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);  
+    }, 0);
+}
+
+function convertArrayToHohserFormat(arr) {
+    var hohserFormatObject = [];
+    arr.forEach(element => {
+        hohserFormatObject.push({
+            domainName: element
+        })
+    });
+    return JSON.stringify(hohserFormatObject);
+}
+
+exportListLink.addEventListener("click", (e) => {
+    download(convertArrayToHohserFormat(ddghurBlockedDomainsArr), 'ddghr-domains.json', 'application/json');
 });
 
