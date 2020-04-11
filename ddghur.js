@@ -15,8 +15,7 @@ function hideResults(blockedDomains){
     for(let i=0; i<results.length; i++){
         for(let j=0; j<blockedDomains.length; j++){
             // let re = new RegExp("(.*\.)*"+blockedDomains[j], "i");
-            let blockedDomain = (blockedDomains[j][0] !== "*") ? blockedDomains[j] : ("/" + blockedDomains[j]);
-            let re = new RegExp(blockedDomain, "i");
+            let re = new RegExp(blockedDomains[j], "i");
             if(results[i].dataset.domain.match(re) !== null) {
                 results[i].classList.add("hideResult");
                 if(('showedHiddenResults' in ddghurOptions) && ddghurOptions.showedHiddenResults === true) {
@@ -34,8 +33,8 @@ function deleteFromBlockedDomainsArr(domain){
     console.log("Delete '"+ domain +"' from blocked domains list");
 }
 
-function addToBlockedDomainsArr(domain){
-    console.log("Add '"+ domain +"' to blocked domains list");
+function addToBlockedDomainsArr(domain) {
+    console.log("Add '" + domain + "' to blocked domains list");
     let ddghurStorage = browser.storage.local.get();
     ddghurStorage.then(function(res){
         let ddghurBlockedDomainsArr = (res.ddghurBlockedDomains !== undefined) ? res.ddghurBlockedDomains : []; 
