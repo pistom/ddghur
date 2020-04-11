@@ -10,13 +10,14 @@ function init(){
     });
 }
 
-function hideResults(blockedDomains){
+function hideResults(blockedDomains){   
     let results = document.querySelectorAll(".results .result:not(.result--sep):not(.result--more)");
     for(let i=0; i<results.length; i++){
         for(let j=0; j<blockedDomains.length; j++){
             // let re = new RegExp("(.*\.)*"+blockedDomains[j], "i");
-            let re = new RegExp(blockedDomains[j], "i");
-            if(results[i].dataset.domain.match(re) !== null){
+            let blockedDomain = (blockedDomains[j][0] !== "*") ? blockedDomains[j] : ("/" + blockedDomains[j]);
+            let re = new RegExp(blockedDomain, "i");
+            if(results[i].dataset.domain.match(re) !== null) {
                 results[i].classList.add("hideResult");
                 if(('showedHiddenResults' in ddghurOptions) && ddghurOptions.showedHiddenResults === true) {
                     results[i].classList.add("enabled");
