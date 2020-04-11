@@ -29,7 +29,10 @@ function reloadPage(){
 
 function storeDomain(domain) {
     if(domain !== ""){
-        if(ddghurBlockedDomainsArr.indexOf(domain) === -1){
+        if (ddghurBlockedDomainsArr.indexOf(domain) === -1) {
+            if(domain[0] == "*") {
+                domain = "/" + domain;
+            }
             ddghurBlockedDomainsArr.push(domain);
             browser.storage.local.set({ ddghurBlockedDomains : ddghurBlockedDomainsArr });
             displayDomains(ddghurBlockedDomainsArr);
@@ -64,7 +67,7 @@ function displayDomains(blockedDomains) {
             row.classList.add("domainsList__row");
         let domain = document.createElement("div");
             domain.classList.add("domainsList__rowDomain");
-        let domainTxt = document.createTextNode(blockedDomains[i]);
+        let domainTxt = document.createTextNode((blockedDomains[i][0] !== "/") ? blockedDomains[i] : (blockedDomains[i].slice(1)));
         let delBtn = document.createElement("button");
             delBtn.classList.add("domainsList__rowDelBtn");
         let delBtnIcon = document.createElement("img");
