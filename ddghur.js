@@ -15,7 +15,9 @@ function hideResults(blockedDomains){
     for(let i=0; i<results.length; i++){
         for(let j=0; j<blockedDomains.length; j++){
             // let re = new RegExp("(.*\.)*"+blockedDomains[j], "i");
-            let re = new RegExp(blockedDomains[j], "i");
+            let re = new RegExp(blockedDomains[j][0] === '*' ?
+                '.'+blockedDomains[j] :
+                blockedDomains[j], "i");
             if(results[i].dataset.domain.match(re) !== null) {
                 results[i].classList.add("hideResult");
                 if(('showedHiddenResults' in ddghurOptions) && ddghurOptions.showedHiddenResults === true) {
